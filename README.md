@@ -26,4 +26,4 @@ A JavaScript web application that generates motivational messages for developers
 ![App Screenshot](images/motivationImage.jpeg)
 
 ## 🌍 Live Demo
-(Will be added after deployment)
+https://gracemacdonald.github.io/motivation-generator/
