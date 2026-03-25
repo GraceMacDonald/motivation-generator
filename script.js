@@ -1,3 +1,4 @@
+// ===== DATA =====
 const messages = [
     { text:"Keep going, you are doing great!", color: "red" },
     { text:"You are making good progress!", color: "salmon" },
@@ -18,35 +19,40 @@ const messages = [
     { text:"You showed up today — that matters.", color: "gray" },
     { text:"Remember why you started and keep going!", color: "yellow" }
 ];
-let currentIndex =0;
-const button = document.getElementById("generate");
-function shuffleMessages(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
 
-        const temp = array[i];
-        array[i] =array[j];
-        array[j] = temp;
-    }
-}
-shuffleMessages(messages);
+// ===== VARIABLES =====
 const messageElement = document.getElementById("message");
+const button = document.getElementById("generate");
+
+let currentIndex = 0;
+
+// ===== FUNCTIONS =====
+function shuffleMessages(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+}
+
+// ===== INITIAL SETUP =====
+shuffleMessages(messages);
 
 messageElement.textContent = messages[currentIndex].text;
 messageElement.style.color = messages[currentIndex].color;
 
-button.addEventListener("click",function() { 
-    const selectedMessage = messages[currentIndex];
-
-  const messageElement = document.getElementById("message");
+// ===== EVENT LISTENER =====
+button.addEventListener("click", () => {
+  const selectedMessage = messages[currentIndex];
 
   messageElement.textContent = selectedMessage.text;
   messageElement.style.color = selectedMessage.color;
 
- currentIndex++;
+  currentIndex++;
 
-    if (currentIndex >= messages.length) {
-        shuffleMessages(messages);
-        currentIndex = 0;
-    }
+  if (currentIndex >= messages.length) {
+    shuffleMessages(messages);
+    currentIndex = 0;
+  }
 });
